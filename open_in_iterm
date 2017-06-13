@@ -1,0 +1,16 @@
+on run {input, parameters}
+	set dir_path to "cd " & (POSIX path of (input as alias))
+	CD_to(dir_path)
+end run
+
+on CD_to(theDir)
+	tell application "iTerm"
+		tell current window
+			activate
+			create tab with default profile
+			tell current session
+				write text theDir
+			end tell
+		end tell
+	end tell
+end CD_to
